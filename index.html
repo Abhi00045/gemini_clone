@@ -51,15 +51,11 @@
         // Display the user's input
         addMessage(prompt, "user-message", "User", "my.jpg");
 
-        try {
-          const result = await model.generateContent(prompt);
+        const result = await model.generateContent(prompt);
           const response = result.response;
           let text = await response.text();
           let x=marked.parse(text);
           console.log(x);
-
-      
-
           addMessage(
             x,
             "ai-message",
@@ -67,15 +63,27 @@
             "geimi-removebg-preview.png"
           );
           document.getElementById("text").value = "";
-        } catch (error) {
-          console.error("Error generating content:", error);
-          addMessage(
-            "Error generating content. Please try again.",
-            "ai-message",
-            "Gemini",
-            "geimi-removebg-preview.png"
-          );
-        }
+
+        // try {
+
+      
+
+        //   addMessage(
+        //     x,
+        //     "ai-message",
+        //     "Gemini",
+        //     "geimi-removebg-preview.png"
+        //   );
+        //   document.getElementById("text").value = "";
+        // } catch (error) {
+        //   console.error("Error generating content:", error);
+        //   addMessage(
+        //     "Error generating content. Please try again.",
+        //     "ai-message",
+        //     "Gemini",
+        //     "geimi-removebg-preview.png"
+        //   );
+        // }
       }
 
       function addMessage(text, className, sender, imgSrc) {
